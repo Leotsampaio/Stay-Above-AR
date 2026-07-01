@@ -970,4 +970,44 @@ legend {
   .marker-opening { left: 28%; bottom: 250px; }
   .marker-materials { right: 18px; bottom: 214px; }
   .marker-anchor { right: 24px; top: 270px; }
+
+  .ai-camera-layout {
+    gap: 14px;
+  }
+
+  .api-key-panel {
+    padding: 14px;
+  }
+
+  .api-key-row {
+    flex-direction: column;
+  }
+
+  .api-key-row input,
+  .api-key-row button {
+    width: 100%;
+  }
+
+  .camera-viewport {
+    aspect-ratio: 3 / 4;
+    min-height: 320px;
+  }
+
+  .camera-placeholder {
+    padding: 20px;
+  }
+
+  .analysis-panel {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .result-body {
+    max-height: none;
+  }
 }
