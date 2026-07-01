@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stay Above AR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar hidden" id="topbar">
+      <button class="brand-button" data-target="dashboard" aria-label="Voltar ao dashboard">
+        <span class="brand-mark">AR</span>
+        <span>Stay Above AR</span>
+      </button>
+
+      <nav class="main-nav" aria-label="Navegacao principal">
+        <button data-target="dashboard">Dashboard</button>
+        <button data-target="modules">Modulos</button>
+        <button data-target="ar-camera">Câmera IA</button>
+        <button data-target="quiz">Questionario</button>
+        <button data-target="certificate">Certificado</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Tela inicial com login demonstrativo. -->
+      <section class="screen login-screen active" id="login">
+        <div class="login-panel">
+          <div class="platform-badge">Treinamento imersivo</div>
+          <h1>Stay Above AR</h1>
+          <p>Treinamento para Prevenção de Quedas em Altura utilizando Realidade Aumentada</p>
+
+          <form id="loginForm" class="login-form">
+            <label for="participantName">Nome do participante</label>
+            <input id="participantName" type="text" placeholder="Digite seu nome" autocomplete="name">
+            <button class="primary-button" type="submit">Entrar na Plataforma</button>
+          </form>
+        </div>
+
+        <div class="login-visual" aria-hidden="true">
+          <div class="tower">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="scan-ring"></div>
+          <div class="hud-card hud-card-a">NR-35</div>
+          <div class="hud-card hud-card-b">Risco: alto</div>
+          <div class="hud-card hud-card-c">EPI validado</div>
+        </div>
+      </section>
+
+      <!-- Dashboard principal do participante. -->
+      <section class="screen" id="dashboard">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h2>Ola, <span data-participant>Participante</span></h2>
+          </div>
+          <button class="primary-button" data-target="modules">Continuar treinamento</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span>Progresso do curso</span>
+            <strong>62%</strong>
+            <div class="progress-bar"><i style="width: 62%"></i></div>
+          </article>
+          <article class="stat-card">
+            <span>Modulos concluidos</span>
+            <strong>4/8</strong>
+            <div class="mini-status success">Ritmo adequado</div>
+          </article>
+          <article class="stat-card">
+            <span>Pontuacao XP</span>
+            <strong>1.850</strong>
+            <div class="mini-status warning">+250 na proxima etapa</div>
+          </article>
+          <article class="stat-card">
+            <span>Status do certificado</span>
+            <strong>Pendente</strong>
+            <div class="mini-status danger">Concluir avaliacao</div>
+          </article>
+        </div>
+
+        <div class="dashboard-layout">
+          <article class="wide-panel">
+            <h3>Proxima atividade</h3>
+            <p>Inspecao simulada em Realidade Aumentada para identificar condicoes inseguras antes da liberacao do trabalho em altura.</p>
+            <button class="secondary-button" data-target="module-content">Abrir conteudo do modulo</button>
+          </article>
+          <article class="signal-panel">
+            <h3>Status operacional</h3>
+            <ul>
+              <li><span class="dot green"></span> EPIs registrados</li>
+              <li><span class="dot yellow"></span> Ancoragem exige verificacao</li>
+              <li><span class="dot red"></span> Risco critico pendente</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Lista de modulos renderizada pelo JavaScript. -->
+      <section class="screen" id="modules">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Curso</p>
+            <h2>Modulos de treinamento</h2>
+          </div>
+          <button class="secondary-button" data-target="dashboard">Voltar</button>
+        </div>
+
+        <div class="modules-grid" id="modulesGrid"></div>
+      </section>
+
+      <!-- Exemplo de conteudo para o modulo Identificacao de Riscos. -->
+      <section class="screen" id="module-content">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Modulo em andamento</p>
+            <h2>Identificacao de Riscos</h2>
+          </div>
+          <button class="secondary-button" data-target="modules">Ver modulos</button>
+        </div>
+
+        <div class="content-layout">
+          <article class="lesson-panel">
+            <h3>Objetivo do modulo</h3>
+            <p>Este modulo apresenta sinais de perigo em atividades realizadas em altura. O participante deve reconhecer condicoes inseguras, avaliar protecoes coletivas e decidir se a atividade pode ser liberada.</p>
+            <h3>Riscos observados</h3>
+            <ul class="risk-list">
+              <li>Ausencia de guarda-corpo</li>
+              <li>Abertura no piso sem protecao</li>
+              <li>Talabarte desconectado</li>
+              <li>Escada mal posicionada</li>
+              <li>Materiais soltos proximos a borda</li>
+            </ul>
+            <div class="button-row">
+              <button class="primary-button" data-target="ar-camera">Inspecionar com câmera IA</button>
+              <button class="secondary-button" data-target="ar-simulation">Simulação visual</button>
+            </div>
+          </article>
+
+          <aside class="lesson-summary">
+            <span class="summary-number">05</span>
+            <p>riscos principais analisados durante a inspecao simulada.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Simulacao visual de Realidade Aumentada, sem uso de camera real. -->
+      <section class="screen" id="ar-simulation">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Simulacao visual</p>
+            <h2>Realidade Aumentada</h2>
+          </div>
+          <button class="secondary-button" data-target="module-content">Voltar ao conteudo</button>
+        </div>
+
+        <div class="ar-layout">
+          <div class="phone-camera" aria-label="Simulacao de camera analisando canteiro de obras">
+            <div class="camera-status">
+              <span>REC</span>
+              <span>AR SCAN 04</span>
+            </div>
+
+            <div class="construction-scene">
+              <div class="skyline"></div>
+              <div class="crane"></div>
+              <div class="building">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="platform"></div>
+              <div class="floor-opening"></div>
+              <div class="guardrail"></div>
+              <div class="lifeline"></div>
+              <div class="loose-materials"></div>
+              <div class="worker"></div>
+            </div>
+
+            <button class="ar-marker marker-green marker-guardrail">Guarda-corpo presente</button>
+            <button class="ar-marker marker-green marker-lifeline">Linha de vida adequada</button>
+            <button class="ar-marker marker-red marker-opening">Abertura no piso sem protecao</button>
+            <button class="ar-marker marker-red marker-materials">Materiais soltos</button>
+            <button class="ar-marker marker-yellow marker-anchor">Verificar ancoragem</button>
+          </div>
+
+          <aside class="mission-panel">
+            <h3>Missao</h3>
+            <p>Identifique os riscos antes de liberar a atividade.</p>
+            <ul class="checklist">
+              <li><input type="checkbox" checked> Identificar guarda-corpo</li>
+              <li><input type="checkbox" checked> Verificar linha de vida</li>
+              <li><input type="checkbox"> Localizar riscos</li>
+              <li><input type="checkbox"> Decidir se a atividade pode ser iniciada</li>
+            </ul>
+            <div class="button-row">
+              <button class="secondary-button" id="markRiskButton">Marcar risco encontrado</button>
+              <button class="secondary-button" id="hintButton">Ver dica</button>
+              <button class="primary-button" id="finishInspectionButton">Finalizar inspecao</button>
+            </div>
+
+            <div class="hint-box hidden" id="hintBox">Observe a borda da plataforma e os pontos de passagem dos trabalhadores.</div>
+
+            <div class="result-box hidden" id="inspectionResult">
+              <h3>Resultado</h3>
+              <p><strong>Pontuacao:</strong> 85%</p>
+              <p><strong>Riscos encontrados:</strong> 4/5</p>
+              <p><strong>Status:</strong> Atividade nao liberada</p>
+              <p>Existem riscos criticos que precisam ser corrigidos antes do inicio do trabalho.</p>
+              <button class="primary-button" data-target="quiz">Responder questionario</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Tela de inspecao com camera real e analise por IA. -->
+      <section class="screen" id="ar-camera">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Inspeção com IA</p>
+            <h2>Análise de Segurança</h2>
+          </div>
+          <button class="secondary-button" data-target="modules">Ver módulos</button>
+        </div>
+
+        <div class="ai-camera-layout">
+          <div class="ai-camera-side">
+            <div class="api-key-panel">
+              <label for="geminiApiKey">Chave da API Gemini</label>
+              <div class="api-key-row">
+                <input id="geminiApiKey" type="password" placeholder="Cole sua API key aqui (AIza...)">
+                <button class="secondary-button" id="startCameraButton">Iniciar câmera</button>
+              </div>
+              <span class="api-key-hint">A chave não é salva e fica apenas nesta aba.</span>
+            </div>
+
+            <div class="camera-viewport" id="cameraViewport">
+              <div class="camera-placeholder" id="cameraPlaceholder">
+                <div class="camera-icon">⬡</div>
+                <p>Aponte a câmera para o ambiente de trabalho e analise os riscos em tempo real.</p>
+              </div>
+              <video class="camera-feed hidden" id="cameraFeed" autoplay playsinline muted></video>
+              <canvas class="hidden" id="captureCanvas"></canvas>
+              <div class="camera-corners hidden" id="cameraCorners">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="camera-scanline hidden" id="cameraScanline"></div>
+            </div>
+
+            <button class="primary-button capture-btn hidden" id="captureButton">
+              Capturar e analisar com IA
+            </button>
+
+            <div class="preview-row hidden" id="previewRow">
+              <img class="captured-img" id="capturedImg" alt="Foto capturada">
+              <button class="secondary-button" id="retakeButton">Nova captura</button>
+            </div>
+          </div>
+
+          <aside class="analysis-panel">
+            <div id="stateIdle">
+              <h3>Análise HST com IA</h3>
+              <p>Configure a API key, inicie a câmera, aponte para o ambiente de trabalho e capture uma foto para receber análise baseada na NR-35.</p>
+              <ul class="feature-list">
+                <li>Identifica riscos de queda em altura</li>
+                <li>Verifica uso correto de EPIs e EPCs</li>
+                <li>Avalia guarda-corpos e ancoragem</li>
+                <li>Indica medidas corretivas por risco</li>
+                <li>Classifica se a atividade pode ser liberada</li>
+              </ul>
+            </div>
+
+            <div class="state-loading hidden" id="stateLoading">
+              <div class="ai-spinner"></div>
+              <p>Analisando imagem com Gemini...</p>
+            </div>
+
+            <div class="hidden" id="stateResult">
+              <div class="result-header">
+                <span class="eyebrow">Resultado da análise</span>
+                <span class="result-badge" id="resultBadge"></span>
+              </div>
+              <div class="result-body" id="resultBody"></div>
+              <button class="secondary-button" id="newAnalysisButton" style="margin-top:16px;width:100%;">Nova análise</button>
+            </div>
+
+            <div class="hidden" id="stateError">
+              <p class="error-pill" id="errorMsg"></p>
+              <button class="secondary-button" id="retryButton">Tentar novamente</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Questionario objetivo gerado por script.js. -->
+      <section class="screen" id="quiz">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Avaliacao</p>
+            <h2>Questionario final</h2>
+          </div>
+          <button class="secondary-button" data-target="dashboard">Dashboard</button>
+        </div>
+
+        <form class="quiz-panel" id="quizForm"></form>
+
+        <div class="quiz-result hidden" id="quizResult">
+          <h3>Resultado do questionario</h3>
+          <p id="quizScore"></p>
+          <p id="quizFeedback"></p>
+          <button class="primary-button" data-target="certificate">Ver certificado</button>
+        </div>
+      </section>
+
+      <!-- Certificado fake para demonstracao academica. -->
+      <section class="screen" id="certificate">
+        <div class="certificate-wrap">
+          <article class="certificate">
+            <div class="certificate-border">
+              <p class="eyebrow">Certificado demonstrativo</p>
+              <h2>Stay Above AR</h2>
+              <p>Certificamos que</p>
+              <h3 data-participant>Participante</h3>
+              <p>concluiu o curso</p>
+              <strong>Prevenção de Quedas em Altura utilizando Realidade Aumentada</strong>
+              <div class="certificate-meta">
+                <span>Carga horaria: 16 horas</span>
+                <span>Status: Prototipo demonstrativo</span>
+              </div>
+              <button class="primary-button" data-target="dashboard">Voltar ao dashboard</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
